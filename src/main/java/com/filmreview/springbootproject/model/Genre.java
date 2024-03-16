@@ -1,0 +1,5 @@
+package com.filmreview.springbootproject.model;
+
+public enum Genre {
+    ADVENTURE,ACTION,DRAMA,FANTASY,COMEDY,CRIME,HISTORICAL,HORROR,SCIENCE_FICTION,THRILLER,WESTERN,OTHER
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous">
+
+</head>
+<body>
+
+<div th:insert="fragments/header.html :: header"></div>
+<br/><br/>
+
+<div class="container my-2" align="center">
+        <div class="col-md-12" th:each="film : ${films}">
+            <a th:href="@{/home/films/{filmId}(filmId=${film.id})}"> <h1 th:text="${film.title}" ></h1></a>
+            <p th:text="${film.genre}"></p>
+            <img th:src="${film.url_image}"/>
+
+            <div>
+                <div class="pull-right">
+                    <span class="label label-info" style="color:pink;" >personal</span>
+            </div>
+                <hr style="height:4px;width:50%;text-align:center;color:green">
+            </div>
+    </div>
+</div>
+<br/><br/>
+
+<div class="container" align="center" >
+    <nobr>
+        <span style="background-color:pink;" th:if="${hasPrev}"><a th:href="@{/home?page={prev}(prev=${prev})}">Prev</a>&nbsp;&nbsp;&nbsp;</span>
+        <span style="background-color:pink;" th:if="${hasNext}"><a th:href="@{/home?page={next}(next=${next})}">Next</a></span>
+    </nobr>
+</div>
+<div th:if="${errorMessage}" th:utext="${errorMessage}" class="error" >
+
+</div>
+</body>
+</html>
